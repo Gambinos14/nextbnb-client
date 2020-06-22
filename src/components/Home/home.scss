@@ -1,0 +1,16 @@
+.img {
+  max-height: 100vh;
+  min-width: 100vw;
+  object-fit: cover;
+}
+
+.hero {
+  position: relative;
+  bottom: 55px;
+  min-width: 100vw;
+}
+
+.container {
+  margin: 0;
+  padding: 0;
+}
