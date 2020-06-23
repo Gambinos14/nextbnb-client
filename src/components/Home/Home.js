@@ -1,40 +1,94 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { Link, Redirect } from 'react-router-dom'
 import Carousel from 'react-bootstrap/Carousel'
 import './home.scss'
+import styled from 'styled-components'
+import { Search } from '@styled-icons/boxicons-regular'
+import apiUrl from '../../apiConfig'
+import axios from 'axios'
+import Form from 'react-bootstrap/Form'
 
-const Home = () => {
+const SearchIcon = styled(Search)`
+  height: 30px;
+  width: 30px;
+  color: #FFF;
+`
+
+const Home = (props) => {
+  const [homes, setHomes] = useState([])
+  const [redirect, setRedirect] = useState(false)
+
+  useEffect(() => {
+    axios(`${apiUrl}/houses/featured/True`)
+      .then(res => {
+        // console.log(res)
+        setHomes(res.data)
+      })
+      .catch(console.error)
+  }, [])
+
+  const handleSearchInput = (event) => {
+    props.setSearch(event.target.value)
+  }
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault()
+    setRedirect(true)
+  }
+
+  if (redirect) {
+    return <Redirect to={'houses/search'} />
+  }
+
   return (
     <div className='hero'>
       <Carousel interval='3000'>
         <Carousel.Item>
           <img
             className="d-block w-100 img"
-            src="https://media.cntraveler.com/photos/5e18e330ac1cea00092e91d2/master/pass/airbnb-beach-dominican-6939168.jpeg"
+            src="https://d1v1n2d34vm51j.cloudfront.net/wp-content/uploads/AdobeStock_46360603.jpg"
+            alt="Third slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100 img"
+            src="https://i2.wp.com/thepointsguy.com/wp-content/uploads/2020/05/PJM020719Q202_Luxe_WanakaNZ_LivingRoom_0264-LightOn_R1-scaled.jpg?fit=2560%2C1707px&ssl=1"
             alt="First slide"
           />
-          <Carousel.Caption>
-          </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <img
             className="d-block w-100 img"
-            src="https://outlawhotels.com/wp-content/uploads/2020/02/Airbnb-Canada.jpg"
-            alt="Third slide"
+            src="https://www.asiaone.com/sites/default/files/inline-images/050719_airbnbluxebali_0.jpg"
+            alt="Second slide"
           />
-
-          <Carousel.Caption>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100 img"
-            src="https://media.cntraveler.com/photos/5c40d940a5c1d51f43a9d2b5/master/w_820,c_limit/Bondi_23256482.jpg"
-            alt="Third slide"
-          />
-          <Carousel.Caption>
-          </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
+      <div className="positionSettings">
+        <p className="mainHeader">Find your next getaway at nextbnb</p>
+        <div className="searchContainer">
+          <Form onSubmit={handleSearchSubmit}className="searchBar">
+            <Form.Control type="text" name="search" placeholder="Search Our Collection of Homes" onChange={handleSearchInput} />
+            <div className="searchButton"><button type='submit'><SearchIcon/></button></div>
+          </Form>
+        </div>
+      </div>
+      <div className="featured">
+        <p>Featured Homes</p>
+        <ul>
+          {homes.map(home => (
+            <Link className='linkDecoration' key={home.id} to={`/house/${home.id}`}>
+              <li>
+                <img src={home.images.length > 0 ? home.images[0].url : 'https://picsum.photos/200'}/>
+                <div>
+                  {home.name}
+                </div>
+              </li>
+            </Link>
+          ))}
+        </ul>
+      </div>
     </div>
   )
 }

@@ -1,7 +1,15 @@
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import './header.scss'
+import styled from 'styled-components'
+import { Airbnb } from '@styled-icons/boxicons-logos'
+
+const Logo = styled(Airbnb)`
+  color: #FF585D;
+  height: 60px;
+  width: 60px;
+  z-index: 1;
+`
 
 const authenticatedOptions = (
   <Fragment>
@@ -24,9 +32,9 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-  <Navbar bg="transparent" variant="light" expand="md">
-    <Navbar.Brand href="#">
-      nextbnb
+  <Navbar bg="transparent" expand="md">
+    <Navbar.Brand className='logo' href="#">
+      <Logo />
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">

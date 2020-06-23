@@ -1,16 +1,113 @@
+$nextbnbFont: 'Source Sans Pro', sans-serif;;
+$nextbnbGreen: #008489;
+$nextbnbRed: #FF585D;
+$nextbnbWhite: #FFF;
+$nextbnbGray: #484848;
+
 .img {
-  max-height: 100vh;
-  min-width: 100vw;
+  height: 100vh;
+  width: 100vw;
   object-fit: cover;
 }
 
 .hero {
-  position: relative;
-  bottom: 55px;
   min-width: 100vw;
 }
 
-.container {
-  margin: 0;
-  padding: 0;
+.featured {
+  // border: 2px solid black;
+  font-family: $nextbnbFont;
+  font-weight: 600;
+  color: rgba(0,0,0,0.95);
+  font-size: 1.0em;
+  padding: 0% 8% 0% 7%;
+  margin-top: -60px;
+  height: 15%;
+  width: 100vw;
+  & ul {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    // border: 2px solid black;
+    padding: 0;
+    & li {
+      border: 0.5px solid lightgray;
+      box-shadow: 1px 1px lightgray;
+      display: flex;
+      flex-direction: row;
+      width: 40vh;
+      height: 17vh;
+      list-style-type: none;
+      & img {
+        width: 50%;
+        height: 100%;
+        object-fit: cover;
+      }
+      & div {
+        color: black;
+        width: 50%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding-left: 4%;
+        padding-right: 3%;
+      }
+    }
+    & .linkDecoration {
+      text-decoration: none;
+    }
+  }
+}
+
+.mainHeader {
+  color: #FFF;
+  font-style: $nextbnbFont;
+  font-weight: 700;
+  font-size: 2em;
+}
+.positionSettings {
+  position: relative;
+  bottom: 27em;
+  left: 15em;
+}
+.searchContainer {
+  background-color: #FFF;
+  border: 0.5px solid black;
+  border-radius: 25px;
+  padding-left: 1%;
+  width: 40vw;
+}
+.searchBar {
+  font-family: $nextbnbFont;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  border-radius: 10%;
+  width: 100%;
+  height: 5vh;
+  z-index: 1;
+  & input {
+    width: 90%;
+    height: 100%;
+    outline: none;
+    border: none;
+    background-color: transparent;
+  }
+  & .searchButton {
+    text-align: center;
+    background-color: $nextbnbRed;
+    border-radius: 10%;
+    margin-right: 5%;
+    width: 10%;
+    cursor: pointer;
+    &:hover {
+      background-color: $nextbnbGray;
+    }
+    & button {
+      background: transparent;
+      border: none;
+      width: 100%;
+    }
+  }
 }

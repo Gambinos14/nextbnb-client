@@ -1,1 +1,59 @@
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400;600;700&display=swap');
+
+$nextbnbFont: 'Source Sans Pro', sans-serif;;
+$nextbnbGreen: #008489;
+$nextbnbRed: #FF585D;
+$nextbnbWhite: #FFF;
+$nextbnbGray: #484848;
+
+html {
+  padding: 0;
+  margin: 0;
+}
+
+
+.navbar {
+  width: 100vw;
+  margin-right: -5%;
+  height: 5em;
+  z-index: 1;
+  // border: 5px solid black;
+}
+
+.logo {
+  margin: 0.2% 0 0 5%;
+  text-align: center;
+  width: 5%;
+}
+
+.carousel-control-prev, .carousel-control-next {
+  display: none;
+}
+
+.navbar-nav {
+  font-size: 0.90em;
+  font-weight: 600;
+  width: 25%;
+  display: flex;
+  justify-content: space-around;
+  margin-right: 8%;
+  margin-top: 0.1%;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  font-family: $nextbnbFont;
+  color: black;
+  border-radius: 50px;
+  text-align: center;
+  width: 7em;
+  &:hover {
+    color: $nextbnbRed;
+    background-color: rgba(237, 240, 242, 0.8);
+  }
+}
+
+.container {
+  margin: 0;
+  padding: 0;
+}

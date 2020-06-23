@@ -1,0 +1,89 @@
+$nextbnbFont: 'Source Sans Pro', sans-serif;;
+$nextbnbGreen: #008489;
+$nextbnbRed: #FF585D;
+$nextbnbWhite: #FFF;
+$nextbnbGray: #484848;
+
+.bookingButton {
+  border: none;
+  background-color: $nextbnbRed;
+  color: $nextbnbWhite;
+  font-family: $nextbnbFont;
+  font-size: 1.5em;
+  font-weight: 600;
+  border-radius: 3px;
+  width: 100%;
+  padding: 1%;
+  box-shadow: 2px 2px #c41217;
+}
+
+.houseInformation {
+  height: 100vh;
+  width: 100vw;
+}
+
+.houseDetails {
+  display: flex;
+  height: 95%;
+  width: 80%;
+  margin-top: 2%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.textDetails {
+  height: 100%;
+  border-right: 2px solid black;
+  width: 60%;
+}
+
+.calendarSection {
+  height: 100%;
+  width: 50%;
+}
+
+.calendar {
+  width: 70%;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding: 5%;
+}
+
+.priceInfo {
+  border-bottom: 1px solid $nextbnbGray;
+  width: 100%;
+  margin: 3% auto 3% auto;
+}
+
+.userInfo {
+  color: $nextbnbGray;
+  text-align: center;
+  border-bottom: 1px solid $nextbnbGray;
+  width: 100%;
+  margin: 3% auto 3% auto;
+  padding: 1% 0;
+}
+
+.dates {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: $nextbnbFont;
+  font-weight: 600;
+  font-size: 0.8em;
+  color: $nextbnbGray
+}
+.price {
+  font-family: $nextbnbFont;
+  font-size: 1.5em;
+  margin-right: 5px;
+  font-weight: 600;
+}
+
+.smallerFont {
+  font-size: 0.7em;
+}
