@@ -4,6 +4,17 @@ $nextbnbRed: #FF585D;
 $nextbnbWhite: #FFF;
 $nextbnbGray: #484848;
 
+.alert {
+  color: $nextbnbRed;
+  text-align: center;
+  width: 100%;
+  margin: 3% auto 3% auto;
+  padding: 1% 0;
+  font-family: $nextbnbFont;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
 .bookingButton {
   border: none;
   background-color: $nextbnbRed;
@@ -83,8 +94,10 @@ $nextbnbGray: #484848;
   width: 100%;
 }
 .calendarSection {
+  // border: 2px solid black;
   height: 100%;
   width: 50%;
+  margin-bottom: 5%;
 }
 
 .calendar {
@@ -111,6 +124,7 @@ $nextbnbGray: #484848;
   width: 100%;
   margin: 3% auto 3% auto;
   padding: 1% 0;
+  font-family: $nextbnbFont;
 }
 
 .dates {

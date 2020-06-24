@@ -1,0 +1,119 @@
+$nextbnbFont: 'Source Sans Pro', sans-serif;;
+$nextbnbGreen: #008489;
+$nextbnbRed: #FF585D;
+$nextbnbWhite: #FFF;
+$nextbnbGray: #484848;
+
+.bookingsHeader {
+  margin-top: 2%;
+  margin-left: 17%;
+}
+
+.bookingsList {
+  margin-top: 2%;
+  // border: 2px solid black;
+  width: 100vw;
+  list-style-type: none;
+}
+
+.bookingLocation {
+  font-family: $nextbnbFont;
+  color: $nextbnbGray;
+}
+.imageContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 30%;
+  & img {
+    width: 100%;
+    height: 90%;
+    object-fit: cover;
+  }
+}
+
+.bookingsContainer {
+  display: flex;
+  margin: auto;
+  // border: 1px solid lightgray;
+  // border-radius: 2px;
+  width: 80%;
+  height: 40vh;
+  margin-top: 3%;
+  & .bookingDetails {
+    // border: 2px solid black;
+    width: 70%;
+    display: flex;
+  }
+}
+
+.dates {
+  // border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: calc(100%/3);
+  font-family: $nextbnbFont;
+  font-weight: 600;
+  font-size: 1.5em;
+  color: $nextbnbGray;
+  & p {
+    border: 1px solid lightgray;
+    font-size: 15px;
+    padding: 2px;
+  }
+}
+
+.price {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 2%;
+  height: 100%;
+  width: calc(100%/3);
+  & > p {
+    font-family: $nextbnbFont;
+    font-weight: 600;
+    color: $nextbnbGray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & span {
+      margin-right: 2%;
+      font-size: 15px;
+    }
+  }
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+.deleteBookingButton {
+  border: none;
+  background-color: $nextbnbRed;
+  color: $nextbnbWhite;
+  font-family: $nextbnbFont;
+  font-size: 0.8em;
+  font-weight: 600;
+  border-radius: 3px;
+  width: 30%;
+  padding: 1%;
+  box-shadow: 2px 2px #c41217;
+  margin-right: 3%;
+}
+
+.updateBookingButton {
+  border: none;
+  background-color: $nextbnbGreen;
+  color: $nextbnbWhite;
+  font-family: $nextbnbFont;
+  font-size: 0.8em;
+  font-weight: 600;
+  border-radius: 3px;
+  width: 30%;
+  padding: 1%;
+  box-shadow: 2px 2px #02595D;
+}

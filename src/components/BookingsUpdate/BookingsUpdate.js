@@ -7,15 +7,20 @@ import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import { DateRange } from 'react-date-range'
 import { addDays } from 'date-fns'
-import './homeshow.scss'
-import { PeopleIcon, BathIcon, WarehouseIcon, WifiIcon, UtensilsIcon, TvIcon, CoffeeIcon, SwimmingPoolIcon, LocalParkingIcon, WasherIcon, DryerIcon, HotelBedIcon } from './homeshowcomponents'
+import '../HomeShow/homeshow.scss'
+import './bookingupdate.scss'
+import { PeopleIcon, BathIcon, WarehouseIcon, WifiIcon, UtensilsIcon, TvIcon, CoffeeIcon, SwimmingPoolIcon, LocalParkingIcon, WasherIcon, DryerIcon, HotelBedIcon } from '../HomeShow/homeshowcomponents'
 
-const HomeShow = (props) => {
-  const houseId = props.match.params.id
+const BookingsUpdate = (props) => {
   const [house, setHouse] = useState({})
   const [images, setImages] = useState([])
-  const [reservationDates, setReservationDates] = useState([])
+  const [houseReservations, setHouseReservations] = useState([])
   const [blockedDates, setBlockedDates] = useState([])
+  const [userReservation, setUserReservation] = useState({})
+
+  const reservationId = props.updateId
+  const guestId = 2
+  const houseId = props.match.params.id
 
   const [reservation, setReservation] = useState({
     startDate: new Date(),
@@ -44,10 +49,15 @@ const HomeShow = (props) => {
       .then(res => {
         setHouse(res.data)
         setImages(res.data.images)
-        // console.log('house: ', res.data)
+        setHouseReservations(res.data.bookings)
         const blackListDates = listDates(res.data.bookings)
+        const currentReservation = listDates(res.data.bookings.filter(booking => booking.id === reservationId))
+        setUserReservation(res.data.bookings.find(booking => booking.id === reservationId))
+        currentReservation.forEach(element => {
+          const removeIndex = blackListDates.indexOf(element)
+          blackListDates.splice(removeIndex, 1)
+        })
         setBlockedDates(blackListDates)
-        setReservationDates(res.data.bookings)
       })
       .catch(console.error)
   }, [])
@@ -65,12 +75,13 @@ const HomeShow = (props) => {
     'Dryer': <DryerIcon />
   }
 
-  const handleBookingRequest = (event) => {
+  const handleUpdateRequest = (event) => {
     const currentReservation = {
       start_date: reservation.startDate.toISOString().split('T')[0],
       end_date: reservation.endDate.toISOString().split('T')[0]
     }
-    // console.log('CurrentReservation: ', currentReservation)
+    const existingReservationIndex = houseReservations.indexOf(userReservation)
+    houseReservations.splice(existingReservationIndex, 1)
 
     const checkAvailability = (reservation, index) => {
       if (reservation.end <= currentReservation.start_date) {
@@ -81,25 +92,25 @@ const HomeShow = (props) => {
           return false
         }
       }
-      if (reservation.start >= currentReservation.end_date && (reservationDates[index - 1].end <= currentReservation.start_date || reservationDates[index - 1].start >= currentReservation.end_date)) {
+      if (reservation.start >= currentReservation.end_date && (houseReservations[index - 1].end <= currentReservation.start_date || houseReservations[index - 1].start >= currentReservation.end_date)) {
         return false
       }
       return true
     }
 
-    const checkBookingConflict = reservationDates.find(checkAvailability)
-    // console.log('Booking Conflict: ', checkBookingConflict !== undefined)
+    const checkBookingConflict = houseReservations.find(checkAvailability)
+
     if (checkBookingConflict !== undefined) {
-      props.msgAlert({ message: 'Booking Request Failed...', variant: 'danger' })
+      props.msgAlert({ message: 'Update Request Failed...', variant: 'danger' })
     } else {
       axios({
-        method: 'POST',
-        url: `${apiUrl}/bookings/`,
+        method: 'PATCH',
+        url: `${apiUrl}/bookings/${reservationId}/`,
         data: {
           booking: {
             start: currentReservation.start_date,
             end: currentReservation.end_date,
-            guest: 2,
+            guest: guestId,
             property: houseId
           }
         }
@@ -110,7 +121,6 @@ const HomeShow = (props) => {
         .catch(console.error)
     }
   }
-
   return (
     <div>
       <div className='hero'>
@@ -152,6 +162,17 @@ const HomeShow = (props) => {
             </div>
           </div>
           <div className="calendarSection">
+            <h4 className="updateHeader">Current Reservation Dates</h4>
+            <div className="bookingUpdateDetails">
+              <div className="dates">
+                Check-In:
+                <p>{userReservation.start}</p>
+              </div>
+              <div className="dates">
+                Check-Out:
+                <p>{userReservation.end}</p>
+              </div>
+            </div>
             <div className="calendar">
               <p className="priceInfo"><span className='price'>${house.price}</span><span className='smallerFont'>per night</span></p>
               <p className="dates">Dates</p>
@@ -165,7 +186,7 @@ const HomeShow = (props) => {
                 disabledDates={blockedDates}
                 minDate={new Date()}
               />
-              <button onClick={handleBookingRequest}className="bookingButton">Book</button>
+              <button onClick={handleUpdateRequest}className="bookingButton">Update Booking</button>
               <p className="userInfo">You will not be charged.</p>
             </div>
           </div>
@@ -174,4 +195,4 @@ const HomeShow = (props) => {
     </div>
   )
 }
-export default withRouter(HomeShow)
+export default withRouter(BookingsUpdate)

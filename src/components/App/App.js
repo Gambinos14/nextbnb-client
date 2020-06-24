@@ -11,6 +11,8 @@ import ChangePassword from '../ChangePassword/ChangePassword'
 import Home from '../Home/Home'
 import HomeSearch from '../HomeSearch/HomeSearch'
 import HomeShow from '../HomeShow/HomeShow'
+import BookingsIndex from '../BookingsIndex/BookingsIndex'
+import BookingsUpdate from '../BookingsUpdate/BookingsUpdate'
 
 class App extends Component {
   constructor () {
@@ -19,11 +21,14 @@ class App extends Component {
     this.state = {
       user: null,
       msgAlerts: [],
-      searchParam: ''
+      searchParam: '',
+      updateBookingId: null
     }
   }
 
   setSearchQuery = string => this.setState({ searchParam: string })
+
+  setUpdateId = num => this.setState({ updateBookingId: num })
 
   setUser = user => this.setState({ user })
 
@@ -56,10 +61,23 @@ class App extends Component {
           <Route exact path='/houses/search' render={() => (
             <HomeSearch
               searchParam={this.state.searchParam}
+              setSearch={this.setSearchQuery}
             />
           )} />
           <Route exact path='/house/:id' render={() => (
             <HomeShow
+              msgAlert={this.msgAlert}
+            />
+          )} />
+          <Route exact path='/bookings' render={() => (
+            <BookingsIndex
+              setUpdateId={this.setUpdateId}
+            />
+          )} />
+          <Route exact path='/bookings-update/:id' render={() => (
+            <BookingsUpdate
+              msgAlert={this.msgAlert}
+              updateId={this.state.updateBookingId}
             />
           )} />
           <Route path='/sign-up' render={() => (

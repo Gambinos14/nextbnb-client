@@ -12,7 +12,19 @@ html {
   margin: 0;
 }
 
+.authform {
+  margin-left: 30%;
+  margin-top: 7%;
+}
 
+.btn.btn-primary {
+  color: $nextbnbWhite;
+  background: $nextbnbRed;
+  border: none;
+  &:hover {
+    background: $nextbnbGray;
+  }
+}
 .navbar {
   width: 100vw;
   margin-right: -5%;

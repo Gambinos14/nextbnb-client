@@ -1,0 +1,20 @@
+$nextbnbFont: 'Source Sans Pro', sans-serif;;
+$nextbnbGreen: #008489;
+$nextbnbRed: #FF585D;
+$nextbnbWhite: #FFF;
+$nextbnbGray: #484848;
+
+.bookingUpdateDetails {
+  display: flex;
+  // border: 2px solid black;
+  justify-content: center;
+}
+
+.updateHeader {
+  text-align: center;
+  padding: 1%;
+  font-family: $nextbnbFont;
+  font-weight: 600;
+  text-decoration: underline;
+  color: $nextbnbGray;
+}
