@@ -18,25 +18,70 @@ $nextbnbGray: #484848;
 }
 
 .houseInformation {
-  height: 100vh;
   width: 100vw;
 }
 
 .houseDetails {
+  // border: 2px solid black;
   display: flex;
-  height: 95%;
+  height: 100%;
   width: 80%;
   margin-top: 2%;
   margin-left: auto;
   margin-right: auto;
 }
 
-.textDetails {
-  height: 100%;
-  border-right: 2px solid black;
-  width: 60%;
+.houseSpecs {
+  margin: 1.5% 0;
+  display: flex;
+  width: 100%;
 }
 
+.houseSpecsText {
+  margin: 5px 10px 0 5px;
+}
+
+.amenitiesSpecs {
+  margin: 1.5% 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.amenitiesText {
+  font-family: 'Times New Roman', sans-serif;
+  font-weight: 600;
+  margin: 5px 10px 0 3px;
+  font-size: 1em;
+}
+
+.apartmentType {
+  font-size: 0.8em;
+  font-family: $nextbnbFont;
+  font-weight: 600;
+}
+
+.apartmentName {
+  font-family: $nextbnbFont;
+  font-weight: 700;
+}
+
+.amenitiesDisplay {
+  // border: 2px solid black;
+  display: flex;
+  width: calc(100%/3);
+}
+
+.textDetails {
+  height: 100%;
+  border-bottom: 1px solid lightgray;
+  width: 60%;
+  padding: 2%;
+}
+
+.divrdrDays{
+  width: 100%;
+}
 .calendarSection {
   height: 100%;
   width: 50%;

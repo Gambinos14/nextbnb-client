@@ -8,6 +8,9 @@ import 'react-date-range/dist/theme/default.css'
 import { DateRange } from 'react-date-range'
 import { addDays } from 'date-fns'
 import './homeshow.scss'
+import { PeopleIcon, BathIcon, WarehouseIcon, WifiIcon, UtensilsIcon, TvIcon, CoffeeIcon, SwimmingPoolIcon, LocalParkingIcon, WasherIcon, DryerIcon, HotelBedIcon } from './homeshowcomponents'
+// import apiUrl from '../../apiConfig'
+// import axios from 'axios'
 
 const HomeShow = (props) => {
   const houseId = props.match.params.id
@@ -42,13 +45,49 @@ const HomeShow = (props) => {
       .then(res => {
         setHouse(res.data)
         setImages(res.data.images)
-        console.log('house: ', res.data)
+        // console.log('house: ', res.data)
         const blackListDates = listDates(res.data.bookings)
         setBlockedDates(blackListDates)
       })
       .catch(console.error)
   }, [])
 
+  const amenities = ['Wifi', 'Pool', 'Washer', 'Dryer', 'Kitchen', 'Breakfast', 'Parking', 'Tv']
+
+  const amenitiesObject = {
+    'Wifi': <WifiIcon />,
+    'Kitchen': <UtensilsIcon />,
+    'Tv': <TvIcon />,
+    'Breakfast': <CoffeeIcon />,
+    'Pool': <SwimmingPoolIcon />,
+    'Parking': <LocalParkingIcon />,
+    'Washer': <WasherIcon />,
+    'Dryer': <DryerIcon />
+  }
+
+  const handleBookingRequest = (event) => {
+    const currentReservation = {
+      start_date: reservation.startDate.toISOString().split('T')[0],
+      end_date: reservation.endDate.toISOString().split('T')[0]
+    }
+    // console.log(currentReservation)
+    axios({
+      method: 'POST',
+      url: `${apiUrl}/bookings/`,
+      data: {
+        booking: {
+          start: currentReservation.start_date,
+          end: currentReservation.end_date,
+          guest: 2,
+          property: houseId
+        }
+      }
+    })
+      .then(() => {
+        props.history.push('/')
+      })
+      .catch(console.error)
+  }
   return (
     <div>
       <div className='hero'>
@@ -67,14 +106,34 @@ const HomeShow = (props) => {
       <div className="houseInformation">
         <div className="houseDetails">
           <div className="textDetails">
-            <h3>{house.name}</h3>
+            <p className="apartmentType">ENTIRE APARTMENT</p>
+            <h3 className="apartmentName">{house.name}</h3>
+            <div className='houseSpecs'>
+              <PeopleIcon />
+              <p className='houseSpecsText'>{house.guest ? `${house.guest} guests` : '4 guests'}</p>
+              <WarehouseIcon />
+              <p className='houseSpecsText'>{house.bedroom ? `${house.bedroom} bedrooms` : '2 bedrooms'}</p>
+              <HotelBedIcon />
+              <p className='houseSpecsText'>{house.bed ? `${house.bed} beds` : '6 beds'}</p>
+              <BathIcon />
+              <p className='houseSpecsText'>{house.bath ? `${house.bath} baths` : '3 baths'}</p>
+            </div>
             <p>{house.description}</p>
+            <div className='amenitiesSpecs'>
+              {amenities.map((amenity, index) => (
+                <div key={index} className="amenitiesDisplay">
+                  {amenitiesObject[amenity]}
+                  <p className='amenitiesText'>{amenity}</p>
+                </div>
+              ))}
+            </div>
           </div>
           <div className="calendarSection">
             <div className="calendar">
               <p className="priceInfo"><span className='price'>${house.price}</span><span className='smallerFont'>per night</span></p>
               <p className="dates">Dates</p>
               <DateRange
+                className="dateRangeCalendar"
                 ranges={[reservation]}
                 onChange={current => setReservation(current.selection)}
                 editableDateInputs={false}
@@ -83,7 +142,7 @@ const HomeShow = (props) => {
                 disabledDates={blockedDates}
                 minDate={new Date()}
               />
-              <button className="bookingButton">Book</button>
+              <button onClick={handleBookingRequest}className="bookingButton">Book</button>
               <p className="userInfo">You will not be charged.</p>
             </div>
           </div>
