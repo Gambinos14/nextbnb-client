@@ -11,6 +11,7 @@ import './homeshow.scss'
 import { PeopleIcon, BathIcon, WarehouseIcon, WifiIcon, UtensilsIcon, TvIcon, CoffeeIcon, SwimmingPoolIcon, LocalParkingIcon, WasherIcon, DryerIcon, HotelBedIcon } from './homeshowcomponents'
 
 const HomeShow = (props) => {
+  // console.log(props.user)
   const houseId = props.match.params.id
   const [house, setHouse] = useState({})
   const [images, setImages] = useState([])
@@ -49,7 +50,7 @@ const HomeShow = (props) => {
         setBlockedDates(blackListDates)
         setReservationDates(res.data.bookings)
       })
-      .catch(console.error)
+      .catch(() => props.msgAlert({ message: 'Could Not Get Home Information ...', variant: 'danger' }))
   }, [])
 
   const amenities = ['Wifi', 'Pool', 'Washer', 'Dryer', 'Kitchen', 'Breakfast', 'Parking', 'Tv']
@@ -90,7 +91,7 @@ const HomeShow = (props) => {
     const checkBookingConflict = reservationDates.find(checkAvailability)
     // console.log('Booking Conflict: ', checkBookingConflict !== undefined)
     if (checkBookingConflict !== undefined) {
-      props.msgAlert({ message: 'Booking Request Failed...', variant: 'danger' })
+      props.msgAlert({ message: 'Booking Request Denied ... Please Check Your Dates', variant: 'danger' })
     } else {
       axios({
         method: 'POST',
@@ -99,15 +100,17 @@ const HomeShow = (props) => {
           booking: {
             start: currentReservation.start_date,
             end: currentReservation.end_date,
-            guest: 2,
             property: houseId
           }
+        },
+        headers: {
+          'Authorization': `Token ${props.user.token}`
         }
       })
         .then(() => {
           props.history.push('/bookings')
         })
-        .catch(console.error)
+        .catch(() => props.msgAlert({ message: 'Booking Request Failed ...', variant: 'danger' }))
     }
   }
 
@@ -165,8 +168,12 @@ const HomeShow = (props) => {
                 disabledDates={blockedDates}
                 minDate={new Date()}
               />
-              <button onClick={handleBookingRequest}className="bookingButton">Book</button>
-              <p className="userInfo">You will not be charged.</p>
+              {props.user &&
+              <div className="w-100">
+                <button onClick={handleBookingRequest} className="bookingButton">Book</button>
+                <p className="userInfo">You will not be charged.</p>
+              </div>
+              }
             </div>
           </div>
         </div>

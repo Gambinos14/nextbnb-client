@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Link, Redirect, withRouter } from 'react-router-dom'
 import Carousel from 'react-bootstrap/Carousel'
 import './home.scss'
 import styled from 'styled-components'
@@ -24,7 +24,7 @@ const Home = (props) => {
         // console.log(res)
         setHomes(res.data)
       })
-      .catch(console.error)
+      .catch(() => props.msgAlert({ message: 'Issue Retrieving Featured Homes ...', variant: 'danger' }))
   }, [])
 
   const handleSearchInput = (event) => {
@@ -34,6 +34,10 @@ const Home = (props) => {
   const handleSearchSubmit = (event) => {
     event.preventDefault()
     setRedirect(true)
+  }
+
+  const handleHouseIndex = (event) => {
+    props.history.push('/houses')
   }
 
   if (redirect) {
@@ -73,6 +77,7 @@ const Home = (props) => {
             <div className="searchButton"><button type='submit'><SearchIcon/></button></div>
           </Form>
         </div>
+        <button className="houseIndexButton" onClick={handleHouseIndex}>View All Homes</button>
       </div>
       <div className="featured">
         <p>Featured Homes</p>
@@ -93,4 +98,4 @@ const Home = (props) => {
   )
 }
 
-export default Home
+export default withRouter(Home)

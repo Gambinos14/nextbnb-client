@@ -11,6 +11,7 @@ import ChangePassword from '../ChangePassword/ChangePassword'
 import Home from '../Home/Home'
 import HomeSearch from '../HomeSearch/HomeSearch'
 import HomeShow from '../HomeShow/HomeShow'
+import HomeIndex from '../HomeIndex/HomeIndex'
 import BookingsIndex from '../BookingsIndex/BookingsIndex'
 import BookingsUpdate from '../BookingsUpdate/BookingsUpdate'
 
@@ -27,13 +28,9 @@ class App extends Component {
   }
 
   setSearchQuery = string => this.setState({ searchParam: string })
-
   setUpdateId = num => this.setState({ updateBookingId: num })
-
-  setUser = user => this.setState({ user })
-
+  setUser = user => this.setState({ user: user })
   clearUser = () => this.setState({ user: null })
-
   msgAlert = ({ heading, message, variant }) => {
     this.setState({ msgAlerts: [...this.state.msgAlerts, { heading, message, variant }] })
   }
@@ -56,29 +53,27 @@ class App extends Component {
           <Route exact path='/' render={() => (
             <Home
               setSearch={this.setSearchQuery}
+              msgAlert={this.msgAlert}
             />
           )}/>
           <Route exact path='/houses/search' render={() => (
             <HomeSearch
               searchParam={this.state.searchParam}
               setSearch={this.setSearchQuery}
+              msgAlert={this.msgAlert}
             />
           )} />
           <Route exact path='/house/:id' render={() => (
-            <HomeShow
-              msgAlert={this.msgAlert}
-            />
+            <HomeShow user={user} msgAlert={this.msgAlert} />
           )} />
-          <Route exact path='/bookings' render={() => (
-            <BookingsIndex
-              setUpdateId={this.setUpdateId}
-            />
+          <Route exact path='/houses' render={() => (
+            <HomeIndex msgAlert={this.msgAlert} />
           )} />
-          <Route exact path='/bookings-update/:id' render={() => (
-            <BookingsUpdate
-              msgAlert={this.msgAlert}
-              updateId={this.state.updateBookingId}
-            />
+          <AuthenticatedRoute user={user} exact path='/bookings' render={() => (
+            <BookingsIndex setUpdateId={this.setUpdateId} user={user} msgAlert={this.msgAlert} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/bookings-update/:id' render={() => (
+            <BookingsUpdate msgAlert={this.msgAlert} updateId={this.state.updateBookingId} user={user}/>
           )} />
           <Route path='/sign-up' render={() => (
             <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />

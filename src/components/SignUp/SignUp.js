@@ -28,17 +28,16 @@ class SignUp extends Component {
 
     signUp(this.state)
       .then(() => signIn(this.state))
-      .then(res => setUser(res.data.user))
+      .then(res => setUser(res.data))
       .then(() => msgAlert({
         heading: 'Sign Up Success',
-        message: messages.signUpSuccess,
         variant: 'success'
       }))
       .then(() => history.push('/'))
-      .catch(error => {
+      .catch(() => {
         this.setState({ email: '', password: '' })
         msgAlert({
-          heading: 'Sign Up Failed with error: ' + error.message,
+          // heading: 'Sign Up Failed with error: ' + error.message,
           message: messages.signUpFailure,
           variant: 'danger'
         })

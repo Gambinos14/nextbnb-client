@@ -8,26 +8,38 @@ const BookingsIndex = (props) => {
   const [bookings, setBookings] = useState([])
   const [updateStatus, setUpdateStatus] = useState(false)
 
+  // console.log(props.user)
+
   useEffect(() => {
-    axios(`${apiUrl}/bookings/`)
+    // console.log(props.user.token)
+    axios({
+      method: 'GET',
+      url: `${apiUrl}/bookings/`,
+      headers: {
+        'Authorization': `Token ${props.user.token}`
+      }
+    })
       .then(res => {
         setBookings(res.data)
         // console.log(res)
       })
-      .catch(console.error)
+      .catch(() => props.msgAlert({ message: 'Failed to Retrieve Bookings ...', variant: 'danger' }))
   }, [updateStatus])
 
   const handleDeleteClick = (id) => {
     // console.log('bookingId: ', id)
     axios({
       method: 'DELETE',
-      url: `${apiUrl}/bookings/${id}`
+      url: `${apiUrl}/bookings/${id}`,
+      headers: {
+        'Authorization': `Token ${props.user.token}`
+      }
     })
       .then(() => {
         // console.log('success')
         setUpdateStatus(!updateStatus)
       })
-      .catch(console.error)
+      .catch(() => props.msgAlert({ message: 'Failed to Delete Bookings ...', variant: 'danger' }))
   }
 
   const handleUpdateClick = (houseId, bookingId) => {
@@ -35,6 +47,9 @@ const BookingsIndex = (props) => {
     props.history.push(`/bookings-update/${houseId}`)
   }
 
+  if (bookings.length === 0) {
+    return (<div className="searchHeader">Go make some bookings!!</div>)
+  }
   return (
     <div>
       <h3 className="bookingsHeader">Bookings</h3>

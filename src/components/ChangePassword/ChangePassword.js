@@ -29,14 +29,13 @@ class ChangePassword extends Component {
     changePassword(this.state, user)
       .then(() => msgAlert({
         heading: 'Change Password Success',
-        message: messages.changePasswordSuccess,
         variant: 'success'
       }))
       .then(() => history.push('/'))
-      .catch(error => {
+      .catch(() => {
         this.setState({ oldPassword: '', newPassword: '' })
         msgAlert({
-          heading: 'Change Password Failed with error: ' + error.message,
+          // heading: 'Change Password Failed with error: ' + error.message,
           message: messages.changePasswordFailure,
           variant: 'danger'
         })
@@ -47,7 +46,7 @@ class ChangePassword extends Component {
     const { oldPassword, newPassword } = this.state
 
     return (
-      <div className="row">
+      <div className="row authform">
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
           <h3>Change Password</h3>
           <Form onSubmit={this.onChangePassword}>

@@ -44,9 +44,10 @@ html {
 }
 
 .navbar-nav {
+  // border: 2px solid black;
   font-size: 0.90em;
   font-weight: 600;
-  width: 25%;
+  width: 50%;
   display: flex;
   justify-content: space-around;
   margin-right: 8%;
@@ -58,7 +59,9 @@ html {
   color: black;
   border-radius: 50px;
   text-align: center;
-  width: 7em;
+  width: 10em;
+  height: 3em;
+  line-height: 1.8em;
   &:hover {
     color: $nextbnbRed;
     background-color: rgba(237, 240, 242, 0.8);

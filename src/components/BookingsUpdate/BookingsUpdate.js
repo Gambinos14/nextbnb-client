@@ -19,7 +19,6 @@ const BookingsUpdate = (props) => {
   const [userReservation, setUserReservation] = useState({})
 
   const reservationId = props.updateId
-  const guestId = 2
   const houseId = props.match.params.id
 
   const [reservation, setReservation] = useState({
@@ -59,7 +58,7 @@ const BookingsUpdate = (props) => {
         })
         setBlockedDates(blackListDates)
       })
-      .catch(console.error)
+      .catch(() => props.msgAlert({ message: 'Could Not Find This House ...', variant: 'danger' }))
   }, [])
 
   const amenities = ['Wifi', 'Pool', 'Washer', 'Dryer', 'Kitchen', 'Breakfast', 'Parking', 'Tv']
@@ -101,7 +100,7 @@ const BookingsUpdate = (props) => {
     const checkBookingConflict = houseReservations.find(checkAvailability)
 
     if (checkBookingConflict !== undefined) {
-      props.msgAlert({ message: 'Update Request Failed...', variant: 'danger' })
+      props.msgAlert({ message: 'Update Request Denied ... Please Check The Dates', variant: 'danger' })
     } else {
       axios({
         method: 'PATCH',
@@ -110,15 +109,17 @@ const BookingsUpdate = (props) => {
           booking: {
             start: currentReservation.start_date,
             end: currentReservation.end_date,
-            guest: guestId,
             property: houseId
           }
+        },
+        headers: {
+          'Authorization': `Token ${props.user.token}`
         }
       })
         .then(() => {
           props.history.push('/bookings')
         })
-        .catch(console.error)
+        .catch(() => props.msgAlert({ message: 'Failed to Update This Booking ...', variant: 'danger' }))
     }
   }
   return (
