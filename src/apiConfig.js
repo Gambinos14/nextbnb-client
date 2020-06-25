@@ -1,6 +1,6 @@
 let apiUrl
 const apiUrls = {
-  production: 'http://localhost:8000',
+  production: 'https://nextbnb-api.herokuapp.com',
   development: 'http://localhost:8000'
 }
 
