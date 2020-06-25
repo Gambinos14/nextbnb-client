@@ -3,13 +3,16 @@ import { Link } from 'react-router-dom'
 import apiUrl from '../../apiConfig'
 import axios from 'axios'
 import '../HomeSearch/homesearch.scss'
+import IndexMap from '../IndexMap/IndexMap'
 
 const HomeIndex = (props) => {
   const [homes, setHomes] = useState(undefined)
 
   useEffect(() => {
     axios(`${apiUrl}/houses/`)
-      .then(res => setHomes(res.data))
+      .then(res => {
+        setHomes(res.data)
+      })
       .catch(() => props.msgAlert({ message: 'Failed to Load Houses ...', variant: 'danger' }))
   }, [])
 
@@ -26,7 +29,7 @@ const HomeIndex = (props) => {
   }
 
   return (
-    <div>
+    <div className="pageViewWrapper">
       <section className="searchResults">
         <h3 className="searchHeader">Explore NextBnB</h3>
         <ul className="results">
@@ -41,8 +44,7 @@ const HomeIndex = (props) => {
           ))}
         </ul>
       </section>
-      <section className="mapContainer">
-      </section>
+      <IndexMap />
     </div>
   )
 }

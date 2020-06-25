@@ -35,7 +35,7 @@ const HomeSearch = (props) => {
   }
 
   return (
-    <div>
+    <div className="pageViewWrapper">
       <section className="searchResults">
         <h3 className="searchHeader">Explore Homes in {currentSearchLocation}</h3>
         <ul className="results">
@@ -49,8 +49,6 @@ const HomeSearch = (props) => {
             </li>
           ))}
         </ul>
-      </section>
-      <section className="mapContainer">
       </section>
     </div>
   )

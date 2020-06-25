@@ -6,7 +6,6 @@ $nextbnbGray: #484848;
 
 .searchResults{
   padding: 3%;
-  border-top: 1px solid lightgray;
   width: 60vw;
   min-height: 100vh;
 }
@@ -63,4 +62,8 @@ $nextbnbGray: #484848;
   font-weight: 400;
   font-size: 0.9em;
   margin-top: -20px;
+}
+
+.pageViewWrapper {
+  display: flex;
 }

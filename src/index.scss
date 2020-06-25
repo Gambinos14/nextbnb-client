@@ -10,6 +10,8 @@ $nextbnbGray: #484848;
 html {
   padding: 0;
   margin: 0;
+  max-width: 1600px;
+  overflow: scroll;
 }
 
 .authform {
@@ -30,6 +32,7 @@ html {
   margin-right: -5%;
   height: 5em;
   z-index: 1;
+  border-bottom: 1px solid lightgray;
   // border: 5px solid black;
 }
 
