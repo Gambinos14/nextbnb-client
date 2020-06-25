@@ -1,18 +1,6 @@
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import styled from 'styled-components'
-import { Next } from '@styled-icons/icomoon'
-
-const Logo = styled(Next)`
-  color: #FF585D;
-  height: 55px;
-  width: 55px;
-  z-index: 1;
-  &:hover {
-    color: #008489;
-  }
-`
 
 const authenticatedOptions = (
   <Fragment>
@@ -38,7 +26,7 @@ const alwaysOptions = (
 const Header = ({ user }) => (
   <Navbar bg="transparent" expand="md">
     <Navbar.Brand className='logo' href="#">
-      <Logo />
+      <i className="far fa-arrow-alt-circle-right"></i>
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">

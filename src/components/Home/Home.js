@@ -2,17 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { Link, Redirect, withRouter } from 'react-router-dom'
 import Carousel from 'react-bootstrap/Carousel'
 import './home.scss'
-import styled from 'styled-components'
-import { Search } from '@styled-icons/boxicons-regular'
 import apiUrl from '../../apiConfig'
 import axios from 'axios'
 import Form from 'react-bootstrap/Form'
-
-const SearchIcon = styled(Search)`
-  height: 30px;
-  width: 30px;
-  color: #FFF;
-`
 
 const Home = (props) => {
   const [homes, setHomes] = useState([])
@@ -74,7 +66,7 @@ const Home = (props) => {
         <div className="searchContainer">
           <Form onSubmit={handleSearchSubmit}className="searchBar">
             <Form.Control type="text" name="search" placeholder="Search Our Collection of Homes" onChange={handleSearchInput} />
-            <div className="searchButton"><button type='submit'><SearchIcon/></button></div>
+            <div className="searchButton"><button type='submit'></button></div>
           </Form>
         </div>
         <button className="houseIndexButton" onClick={handleHouseIndex}>View All Homes</button>

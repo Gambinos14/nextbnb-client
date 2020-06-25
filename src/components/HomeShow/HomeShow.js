@@ -8,7 +8,6 @@ import 'react-date-range/dist/theme/default.css'
 import { DateRange } from 'react-date-range'
 import { addDays } from 'date-fns'
 import './homeshow.scss'
-import { PeopleIcon, BathIcon, WarehouseIcon, WifiIcon, UtensilsIcon, TvIcon, CoffeeIcon, SwimmingPoolIcon, LocalParkingIcon, WasherIcon, DryerIcon, HotelBedIcon } from './homeshowcomponents'
 
 const HomeShow = (props) => {
   // console.log(props.user)
@@ -56,14 +55,14 @@ const HomeShow = (props) => {
   const amenities = ['Wifi', 'Pool', 'Washer', 'Dryer', 'Kitchen', 'Breakfast', 'Parking', 'Tv']
 
   const amenitiesObject = {
-    'Wifi': <WifiIcon />,
-    'Kitchen': <UtensilsIcon />,
-    'Tv': <TvIcon />,
-    'Breakfast': <CoffeeIcon />,
-    'Pool': <SwimmingPoolIcon />,
-    'Parking': <LocalParkingIcon />,
-    'Washer': <WasherIcon />,
-    'Dryer': <DryerIcon />
+    'Wifi': 'Wifi',
+    'Kitchen': 'Utensils',
+    'Tv': 'Tv',
+    'Breakfast': 'Coffee',
+    'Pool': 'Pool',
+    'Parking': 'Parking',
+    'Washer': 'Washer',
+    'Dryer': 'Dryer'
   }
 
   const handleBookingRequest = (event) => {
@@ -135,13 +134,9 @@ const HomeShow = (props) => {
             <p className="apartmentType">ENTIRE APARTMENT</p>
             <h3 className="apartmentName">{house.name}</h3>
             <div className='houseSpecs'>
-              <PeopleIcon />
               <p className='houseSpecsText'>{house.guests ? `${house.guest} guests` : '4 guests'}</p>
-              <WarehouseIcon />
               <p className='houseSpecsText'>{house.bedrooms ? `${house.bedroom} bedrooms` : '2 bedrooms'}</p>
-              <HotelBedIcon />
               <p className='houseSpecsText'>{house.beds ? `${house.bed} beds` : '6 beds'}</p>
-              <BathIcon />
               <p className='houseSpecsText'>{house.baths ? `${house.bath} baths` : '3 baths'}</p>
             </div>
             <p>{house.description}</p>
