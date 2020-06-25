@@ -133,13 +133,13 @@ const HomeShow = (props) => {
             <h3 className="apartmentName">{house.name}</h3>
             <div className='houseSpecs'>
               <i className="utilitiesIcons fas fa-user-friends"></i>
-              <p className='houseSpecsText'>{house.guests ? `${house.guest} guests` : '4 guests'}</p>
+              <p className='houseSpecsText'>{house.guests ? `${house.guests} guests` : '4 guests'}</p>
               <i className="utilitiesIcons fas fa-warehouse"></i>
-              <p className='houseSpecsText'>{house.bedrooms ? `${house.bedroom} bedrooms` : '2 bedrooms'}</p>
+              <p className='houseSpecsText'>{house.bedrooms ? `${house.bedrooms} bedrooms` : '2 bedrooms'}</p>
               <i className="utilitiesIcons fas fa-bed"></i>
-              <p className='houseSpecsText'>{house.beds ? `${house.bed} beds` : '6 beds'}</p>
+              <p className='houseSpecsText'>{house.beds ? `${house.beds} beds` : '6 beds'}</p>
               <i className="utilitiesIcons fas fa-bath"></i>
-              <p className='houseSpecsText'>{house.baths ? `${house.bath} baths` : '3 baths'}</p>
+              <p className='houseSpecsText'>{house.baths ? `${house.baths} baths` : '3 baths'}</p>
             </div>
             <p>{house.description}</p>
             <div className='amenitiesSpecs'>
