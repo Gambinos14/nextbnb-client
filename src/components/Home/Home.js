@@ -66,7 +66,7 @@ const Home = (props) => {
         <div className="searchContainer">
           <Form onSubmit={handleSearchSubmit}className="searchBar">
             <Form.Control type="text" name="search" placeholder="Search Our Collection of Homes" onChange={handleSearchInput} />
-            <div className="searchButton"><button type='submit'></button></div>
+            <div className="searchButton"><button type='submit'><i className="searchIcon fas fa-search"></i></button></div>
           </Form>
         </div>
         <button className="houseIndexButton" onClick={handleHouseIndex}>View All Homes</button>

@@ -52,17 +52,15 @@ const HomeShow = (props) => {
       .catch(() => props.msgAlert({ message: 'Could Not Get Home Information ...', variant: 'danger' }))
   }, [])
 
-  const amenities = ['Wifi', 'Pool', 'Washer', 'Dryer', 'Kitchen', 'Breakfast', 'Parking', 'Tv']
+  const amenities = ['Wifi', 'Pool', 'Kitchen', 'Breakfast', 'Parking', 'Tv']
 
   const amenitiesObject = {
-    'Wifi': 'Wifi',
-    'Kitchen': 'Utensils',
-    'Tv': 'Tv',
-    'Breakfast': 'Coffee',
-    'Pool': 'Pool',
-    'Parking': 'Parking',
-    'Washer': 'Washer',
-    'Dryer': 'Dryer'
+    'Wifi': <i className="utilitiesIcons fas fa-wifi"></i>,
+    'Kitchen': <i className="utilitiesIcons fas fa-utensils"></i>,
+    'Tv': <i className="utilitiesIcons fas fa-tv"></i>,
+    'Breakfast': <i className="utilitiesIcons fas fa-tv"></i>,
+    'Pool': <i className="utilitiesIcons fas fa-swimming-pool"></i>,
+    'Parking': <i className="utilitiesIcons fas fa-parking"></i>
   }
 
   const handleBookingRequest = (event) => {
@@ -134,9 +132,13 @@ const HomeShow = (props) => {
             <p className="apartmentType">ENTIRE APARTMENT</p>
             <h3 className="apartmentName">{house.name}</h3>
             <div className='houseSpecs'>
+              <i className="utilitiesIcons fas fa-user-friends"></i>
               <p className='houseSpecsText'>{house.guests ? `${house.guest} guests` : '4 guests'}</p>
+              <i className="utilitiesIcons fas fa-warehouse"></i>
               <p className='houseSpecsText'>{house.bedrooms ? `${house.bedroom} bedrooms` : '2 bedrooms'}</p>
+              <i className="utilitiesIcons fas fa-bed"></i>
               <p className='houseSpecsText'>{house.beds ? `${house.bed} beds` : '6 beds'}</p>
+              <i className="utilitiesIcons fas fa-bath"></i>
               <p className='houseSpecsText'>{house.baths ? `${house.bath} baths` : '3 baths'}</p>
             </div>
             <p>{house.description}</p>

@@ -15,6 +15,9 @@ $nextbnbGray: #484848;
   font-weight: 600;
 }
 
+.descriptionBox {
+  max-width: 100%;
+}
 .bookingButton {
   border: none;
   background-color: $nextbnbRed;
@@ -152,4 +155,10 @@ $nextbnbGray: #484848;
   font-size: 0.7em;
   margin-left: -27px;
   margin-top: 3.5%;
+}
+
+.utilitiesIcons {
+  margin-top: 2px;
+  font-size: 1.3em;
+  margin-right: 1px;
 }

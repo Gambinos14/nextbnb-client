@@ -34,9 +34,13 @@ html {
 }
 
 .logo {
-  margin: 0.2% 0 0 5%;
+  margin: 0.2% 0 0 7%;
   text-align: center;
-  width: 5%;
+  color: $nextbnbRed;
+  font-size: 2em;
+  &:hover {
+    color: $nextbnbGreen;
+  }
 }
 
 .carousel-control-prev, .carousel-control-next {

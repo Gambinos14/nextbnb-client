@@ -26,7 +26,7 @@ const alwaysOptions = (
 const Header = ({ user }) => (
   <Navbar bg="transparent" expand="md">
     <Navbar.Brand className='logo' href="#">
-      <i className="far fa-arrow-alt-circle-right"></i>
+      <i className="logo fas fa-chevron-circle-right"></i>
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
