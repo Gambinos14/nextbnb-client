@@ -25,7 +25,7 @@ const HomeSearch = (props) => {
         setSearchLocation(headerText)
         props.setSearch('')
       })
-      .catch(() => props.msgAlert({ message: 'Could Not Complete Search ...', variant: 'danger' }))
+      .catch(() => props.msgAlert({ message: 'We could not find any homes ...', variant: 'danger' }))
   }, [])
 
   if (homes.length === 0) {
