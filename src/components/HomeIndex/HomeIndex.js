@@ -12,7 +12,6 @@ const HomeIndex = (props) => {
     axios(`${apiUrl}/houses/`)
       .then(res => {
         setHomes(res.data)
-        console.log(res.data)
       })
       .catch(() => props.msgAlert({ message: 'Failed to Load Houses ...', variant: 'danger' }))
   }, [])

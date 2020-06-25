@@ -16,6 +16,7 @@ const HomeShow = (props) => {
   const [images, setImages] = useState([])
   const [reservationDates, setReservationDates] = useState([])
   const [blockedDates, setBlockedDates] = useState([])
+  const [amenities, setAmenities] = useState([])
 
   const [reservation, setReservation] = useState({
     startDate: new Date(),
@@ -43,6 +44,7 @@ const HomeShow = (props) => {
     axios(`${apiUrl}/houses/id/${houseId}/`)
       .then(res => {
         setHouse(res.data)
+        setAmenities(res.data.amenities)
         setImages(res.data.images)
         // console.log('house: ', res.data)
         const blackListDates = listDates(res.data.bookings)
@@ -52,13 +54,11 @@ const HomeShow = (props) => {
       .catch(() => props.msgAlert({ message: 'Could Not Get Home Information ...', variant: 'danger' }))
   }, [])
 
-  const amenities = ['Wifi', 'Pool', 'Kitchen', 'Breakfast', 'Parking', 'Tv']
-
   const amenitiesObject = {
     'Wifi': <i className="utilitiesIcons fas fa-wifi"></i>,
     'Kitchen': <i className="utilitiesIcons fas fa-utensils"></i>,
     'Tv': <i className="utilitiesIcons fas fa-tv"></i>,
-    'Breakfast': <i className="utilitiesIcons fas fa-tv"></i>,
+    'Breakfast': <i className="utilitiesIcons fas fa-coffee"></i>,
     'Pool': <i className="utilitiesIcons fas fa-swimming-pool"></i>,
     'Parking': <i className="utilitiesIcons fas fa-parking"></i>
   }
