@@ -49,13 +49,22 @@ const BookingsUpdate = (props) => {
         setHouse(res.data)
         setImages(res.data.images)
         setHouseReservations(res.data.bookings)
-        const blackListDates = listDates(res.data.bookings)
+        let blackListDates = listDates(res.data.bookings)
+        // console.log('blackListDates: ', blackListDates)
+
         const currentReservation = listDates(res.data.bookings.filter(booking => booking.id === reservationId))
         setUserReservation(res.data.bookings.find(booking => booking.id === reservationId))
-        currentReservation.forEach(element => {
-          const removeIndex = blackListDates.indexOf(element)
-          blackListDates.splice(removeIndex, 1)
+
+        const convertBlackListDates = blackListDates.map(date => Date.parse(date))
+
+        currentReservation.forEach(date => {
+          const removeIndex = convertBlackListDates.indexOf(Date.parse(date))
+          // console.log('removeIndex: ', removeIndex)
+          convertBlackListDates.splice(removeIndex, 1)
         })
+
+        blackListDates = convertBlackListDates.map(date => new Date(date))
+        // console.log('NewBlockedDates: ', blackListDates)
         setBlockedDates(blackListDates)
       })
       .catch(() => props.msgAlert({ message: 'Could Not Find This House ...', variant: 'danger' }))
@@ -176,7 +185,7 @@ const BookingsUpdate = (props) => {
             </div>
             <div className="calendar">
               <p className="priceInfo"><span className='price'>${house.price}</span><span className='smallerFont'>per night</span></p>
-              <p className="dates">Dates</p>
+              <p id="dates">Dates</p>
               <DateRange
                 className="dateRangeCalendar"
                 ranges={[reservation]}

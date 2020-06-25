@@ -2,13 +2,16 @@ import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import styled from 'styled-components'
-import { Airbnb } from '@styled-icons/boxicons-logos'
+import { Next } from '@styled-icons/icomoon'
 
-const Logo = styled(Airbnb)`
+const Logo = styled(Next)`
   color: #FF585D;
-  height: 60px;
-  width: 60px;
+  height: 55px;
+  width: 55px;
   z-index: 1;
+  &:hover {
+    color: #008489;
+  }
 `
 
 const authenticatedOptions = (

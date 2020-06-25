@@ -26,6 +26,10 @@ $nextbnbGray: #484848;
   width: 100%;
   padding: 1%;
   box-shadow: 2px 2px #c41217;
+  &:hover {
+    background-color: $nextbnbGreen;
+    box-shadow: 2px 2px #02595D;
+  }
 }
 
 .houseInformation {
@@ -112,6 +116,7 @@ $nextbnbGray: #484848;
 }
 
 .priceInfo {
+  display: flex;
   border-bottom: 1px solid $nextbnbGray;
   width: 100%;
   margin: 3% auto 3% auto;
@@ -127,22 +132,24 @@ $nextbnbGray: #484848;
   font-family: $nextbnbFont;
 }
 
-.dates {
+#dates {
   width: 100%;
-  margin: 0;
+  margin: 1% 0 0 0;
   padding: 0;
   font-family: $nextbnbFont;
   font-weight: 600;
-  font-size: 0.8em;
+  font-size: 12px;
   color: $nextbnbGray
 }
 .price {
   font-family: $nextbnbFont;
   font-size: 1.5em;
-  margin-right: 5px;
+  margin-right: 2px;
   font-weight: 600;
 }
 
 .smallerFont {
   font-size: 0.7em;
+  margin-left: -27px;
+  margin-top: 3.5%;
 }

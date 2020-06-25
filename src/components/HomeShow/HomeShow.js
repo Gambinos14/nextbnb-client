@@ -157,7 +157,7 @@ const HomeShow = (props) => {
           <div className="calendarSection">
             <div className="calendar">
               <p className="priceInfo"><span className='price'>${house.price}</span><span className='smallerFont'>per night</span></p>
-              <p className="dates">Dates</p>
+              <p id="dates">Dates</p>
               <DateRange
                 className="dateRangeCalendar"
                 ranges={[reservation]}
