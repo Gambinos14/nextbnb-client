@@ -5,6 +5,7 @@ properties as they plan their next travel adventure!
 
 ## Important Links
 
+- [NextBnb Djano API Repo](https://github.com/Gambinos14/nextbnb-api)
 - [NextBnb Django API](https://nextbnb-api.herokuapp.com/)
 - [NextBnb Client](https://gambinos14.github.io/nextbnb-client/#/)
 
