@@ -6,7 +6,6 @@ properties as they plan their next travel adventure!
 ## Important Links
 
 - [NextBnb Django API](https://nextbnb-api.herokuapp.com/)
-
 - [NextBnb Client](https://gambinos14.github.io/nextbnb-client/#/)
 
 ## Homepage View
@@ -38,15 +37,15 @@ aspect; however, in the end it came out pretty acceptable.
 
 ### User Stories
 
-*As an unregistered user, I would like to sign up with email and password.
-*As a registered user, I would like to sign in with email and password.
-*As a signed in user, I would like to change password.
-*As a signed in user, I would like to sign out.
-*As a signed in user, I would like to make a reservation at my favorite property.
-*As a signed in user, I would like to be able to update my reservation.
-*As a signed in user, I would like to cancel a reservation.
-*As a signed in user, I would like to see all my reservations.
-*As a signed in user, I would like to view individual reservation details
+* As an unregistered user, I would like to sign up with email and password.
+* As a registered user, I would like to sign in with email and password.
+* As a signed in user, I would like to change password.
+* As a signed in user, I would like to sign out.
+* As a signed in user, I would like to make a reservation at my favorite property.
+* As a signed in user, I would like to be able to update my reservation.
+* As a signed in user, I would like to cancel a reservation.
+* As a signed in user, I would like to see all my reservations.
+* As a signed in user, I would like to view individual reservation details
 
 ### Technologies Used
 
