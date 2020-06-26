@@ -59,6 +59,14 @@ aspect; however, in the end it came out pretty acceptable.
 - Bootstrap
 - Google Maps API
 
+### Preparation to Install
+
+1. Fork and clone this repository.
+2. Create a new branch to work on.
+3. Checkout to your new branch.
+4. Install dependencies by running ```npm install```.
+5. Spin up server with ```npm start```. 
+
 ### Unsolved Problems/Future Updates
 
 - Would like to do some CSS fine tuning to fix the positioning of certain
