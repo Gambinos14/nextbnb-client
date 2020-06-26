@@ -4,23 +4,23 @@ import axios from 'axios'
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
 
 const indexStyle = {
-  marginTop: '95px',
-  width: '35vw',
-  height: '35vw',
-  position: 'fixed'
+  marginTop: '50px',
+  marginBottom: '50px',
+  width: '45vw',
+  height: '35vw'
 }
 
-const IndexMap = (props) => {
-  const [homes, setHomes] = useState([])
+const ShowHouseMap = (props) => {
+  const [home, setHome] = useState({})
   const [center, setCenter] = useState({})
 
   useEffect(() => {
-    axios(`${apiUrl}/houses/`)
+    axios(`${apiUrl}/houses/id/${props.houseId}/`)
       .then(res => {
-        setHomes(res.data)
+        setHome(res.data)
         setCenter({
-          lat: res.data[0].latitude,
-          lng: res.data[0].longitude
+          lat: res.data.latitude,
+          lng: res.data.longitude
         })
       })
       .catch(console.error)
@@ -30,16 +30,14 @@ const IndexMap = (props) => {
     <Map
       google={props.google}
       containerStyle={indexStyle}
-      zoom={10}
+      zoom={15}
       defaultCenter={center}
       center={center}>
-      {homes.map(home => (
-        <Marker key={home.id} position={{ lat: home.latitude, lng: home.longitude }} />
-      ))}
+      <Marker key={home.id} position={{ lat: home.latitude, lng: home.longitude }} />
     </Map>
   )
 }
 
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyB-TRWMURP92g2f0t26iUj5ptaSpqOifUY'
-})(IndexMap)
+})(ShowHouseMap)

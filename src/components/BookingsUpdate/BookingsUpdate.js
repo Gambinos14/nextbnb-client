@@ -9,6 +9,7 @@ import { DateRange } from 'react-date-range'
 import { addDays } from 'date-fns'
 import '../HomeShow/homeshow.scss'
 import './bookingupdate.scss'
+import ShowHouseMap from '../ShowHouseMap/ShowHouseMap'
 
 const BookingsUpdate = (props) => {
   const [house, setHouse] = useState({})
@@ -167,6 +168,7 @@ const BookingsUpdate = (props) => {
                 </div>
               ))}
             </div>
+            <ShowHouseMap houseId={houseId} />
           </div>
           <div className="calendarSection">
             <h4 className="updateHeader">Current Reservation Dates</h4>

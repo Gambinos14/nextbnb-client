@@ -8,6 +8,7 @@ import 'react-date-range/dist/theme/default.css'
 import { DateRange } from 'react-date-range'
 import { addDays } from 'date-fns'
 import './homeshow.scss'
+import ShowHouseMap from '../ShowHouseMap/ShowHouseMap'
 
 const HomeShow = (props) => {
   // console.log(props.user)
@@ -150,6 +151,7 @@ const HomeShow = (props) => {
                 </div>
               ))}
             </div>
+            <ShowHouseMap houseId={houseId} />
           </div>
           <div className="calendarSection">
             <div className="calendar">

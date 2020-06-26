@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 import apiUrl from '../../apiConfig'
 import axios from 'axios'
 import './homesearch.scss'
+import HomeSearchMap from '../HomeSearchMap/HomeSearchMap'
 
 const HomeSearch = (props) => {
   const searchString = props.searchParam.toLowerCase()
-  // console.log(searchString)
   const arrayOfStrings = searchString.split(' ')
   arrayOfStrings.forEach((element, index) => {
     const capitalizeFirstLetter = arrayOfStrings[index].charAt(0).toUpperCase()
@@ -19,7 +19,7 @@ const HomeSearch = (props) => {
   const [currentSearchLocation, setSearchLocation] = useState('')
 
   useEffect(() => {
-    axios(`${apiUrl}/houses/${headerText}/`)
+    axios(`${apiUrl}/houses/${searchString}/`)
       .then(res => {
         setHomes(res.data)
         setSearchLocation(headerText)
@@ -50,6 +50,7 @@ const HomeSearch = (props) => {
           ))}
         </ul>
       </section>
+      <HomeSearchMap headerText={currentSearchLocation.toLowerCase()}/>
     </div>
   )
 }

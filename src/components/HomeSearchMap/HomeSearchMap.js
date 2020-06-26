@@ -10,12 +10,12 @@ const indexStyle = {
   position: 'fixed'
 }
 
-const IndexMap = (props) => {
+const HomeSearchMap = (props) => {
   const [homes, setHomes] = useState([])
   const [center, setCenter] = useState({})
 
   useEffect(() => {
-    axios(`${apiUrl}/houses/`)
+    axios(`${apiUrl}/houses/${props.headerText}/`)
       .then(res => {
         setHomes(res.data)
         setCenter({
@@ -42,4 +42,4 @@ const IndexMap = (props) => {
 
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyB-TRWMURP92g2f0t26iUj5ptaSpqOifUY'
-})(IndexMap)
+})(HomeSearchMap)
