@@ -5,12 +5,13 @@ properties as they plan their next travel adventure!
 
 ## Important Links
 
-*[NextBnb Django API](https://nextbnb-api.herokuapp.com/)
-*[NextBnb Client](https://gambinos14.github.io/nextbnb-client/#/)
+- [NextBnb Django API](https://nextbnb-api.herokuapp.com/)
+
+- [NextBnb Client](https://gambinos14.github.io/nextbnb-client/#/)
 
 ## Homepage View
 
-![NextBnb Homepage]('../NextBnb App.JPG')
+![Homepage](nextbnb.jpg)
 
 ## Planning Story
 
