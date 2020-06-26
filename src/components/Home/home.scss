@@ -11,7 +11,8 @@ $nextbnbGray: #484848;
 }
 
 .hero {
-  min-width: 100vw;
+  width: 1600px;
+  overflow: hidden;
 }
 
 .houseIndexButton {
@@ -87,7 +88,7 @@ $nextbnbGray: #484848;
 }
 .positionSettings {
   position: relative;
-  bottom: 29em;
+  bottom: 31em;
   left: 15em;
 }
 .searchContainer {
