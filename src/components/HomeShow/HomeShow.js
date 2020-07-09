@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 import Carousel from 'react-bootstrap/Carousel'
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
 import apiUrl from '../../apiConfig'
 import axios from 'axios'
 import 'react-date-range/dist/styles.css'
@@ -18,6 +20,7 @@ const HomeShow = (props) => {
   const [reservationDates, setReservationDates] = useState([])
   const [blockedDates, setBlockedDates] = useState([])
   const [amenities, setAmenities] = useState([])
+  const [modalShow, setModalShow] = useState(true)
 
   const [reservation, setReservation] = useState({
     startDate: new Date(),
@@ -177,7 +180,23 @@ const HomeShow = (props) => {
           </div>
         </div>
       </div>
+      <Modal show={modalShow} onHide={() => setModalShow(false)}size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+        <Modal.Header closeButton>
+        </Modal.Header>
+        <Modal.Body>
+          <h4>Centered Modal</h4>
+          <p>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
+            consectetur ac, vestibulum at eros.
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={() => setModalShow(false)}>Close</Button>
+        </Modal.Footer>
+      </Modal>
     </div>
+
   )
 }
 export default withRouter(HomeShow)
