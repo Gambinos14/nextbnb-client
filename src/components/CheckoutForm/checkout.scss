@@ -1,0 +1,62 @@
+$nextbnbFont: 'Source Sans Pro', sans-serif;;
+$nextbnbGreen: #008489;
+$nextbnbRed: #FF585D;
+$nextbnbWhite: #FFF;
+$nextbnbGray: #484848;
+
+.card-errors {
+  color: red;
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-family: $nextbnbFont;
+}
+.payButton {
+  margin-top: 1.0rem;
+}
+
+.paymentLabel {
+  font-size: 1.0rem;
+}
+
+.bookingDetails {
+  // border: 2px solid black;
+  display: flex;
+  padding: 2rem;
+  height: 15rem;
+  font-family: $nextbnbFont;
+  color: $nextbnbGray;
+}
+
+.bookingDetails img {
+  // border: 2px solid black;
+  height: 100%;
+  width: 30%;
+}
+
+.bookingDates, .finalCost {
+  // border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: calc(70% / 3);
+  padding-bottom: 0.25rem;
+}
+
+.bookingDates p {
+  margin: 0;
+  padding: 0;
+}
+
+
+.finalCost p {
+  margin: 0;
+  padding: 0;
+}
+
+.finalCost .chargeAmount {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: $nextbnbRed;
+}

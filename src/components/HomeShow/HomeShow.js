@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 import Carousel from 'react-bootstrap/Carousel'
 import Modal from 'react-bootstrap/Modal'
-import Button from 'react-bootstrap/Button'
 import apiUrl from '../../apiConfig'
 import axios from 'axios'
 import 'react-date-range/dist/styles.css'
@@ -11,6 +10,7 @@ import { DateRange } from 'react-date-range'
 import { addDays } from 'date-fns'
 import './homeshow.scss'
 import ShowHouseMap from '../ShowHouseMap/ShowHouseMap'
+import CheckoutForm from '../CheckoutForm/CheckoutForm'
 
 const HomeShow = (props) => {
   // console.log(props.user)
@@ -20,7 +20,7 @@ const HomeShow = (props) => {
   const [reservationDates, setReservationDates] = useState([])
   const [blockedDates, setBlockedDates] = useState([])
   const [amenities, setAmenities] = useState([])
-  const [modalShow, setModalShow] = useState(true)
+  const [modalShow, setModalShow] = useState(false)
 
   const [reservation, setReservation] = useState({
     startDate: new Date(),
@@ -94,24 +94,7 @@ const HomeShow = (props) => {
     if (checkBookingConflict !== undefined) {
       props.msgAlert({ message: 'Booking Request Denied ... Please Check Your Dates', variant: 'danger' })
     } else {
-      axios({
-        method: 'POST',
-        url: `${apiUrl}/bookings/`,
-        data: {
-          booking: {
-            start: currentReservation.start_date,
-            end: currentReservation.end_date,
-            property: houseId
-          }
-        },
-        headers: {
-          'Authorization': `Token ${props.user.token}`
-        }
-      })
-        .then(() => {
-          props.history.push('/bookings')
-        })
-        .catch(() => props.msgAlert({ message: 'Booking Request Failed ...', variant: 'danger' }))
+      setModalShow(true)
     }
   }
 
@@ -184,16 +167,8 @@ const HomeShow = (props) => {
         <Modal.Header closeButton>
         </Modal.Header>
         <Modal.Body>
-          <h4>Centered Modal</h4>
-          <p>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-            consectetur ac, vestibulum at eros.
-          </p>
+          <CheckoutForm reservation={reservation} house={house} houseId={houseId} user={props.user} msgAlert={props.msgAlert}/>
         </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={() => setModalShow(false)}>Close</Button>
-        </Modal.Footer>
       </Modal>
     </div>
 

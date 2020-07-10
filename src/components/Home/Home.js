@@ -77,7 +77,7 @@ const Home = (props) => {
           {homes.map(home => (
             <Link className='linkDecoration' key={home.id} to={`/house/${home.id}`}>
               <li>
-                <img src={home.images.length > 0 ? home.images[0].url : 'https://picsum.photos/200'}/>
+                <img src={home.images.length > 0 ? home.images[0].url : 'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'}/>
                 <div>
                   {home.name}
                 </div>
