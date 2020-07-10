@@ -28,10 +28,6 @@ class SignIn extends Component {
 
     signIn(this.state)
       .then(res => setUser(res.data))
-      .then(() => msgAlert({
-        heading: 'Sign In Success',
-        variant: 'success'
-      }))
       .then(() => history.push('/'))
       .catch(() => {
         this.setState({ email: '', password: '' })

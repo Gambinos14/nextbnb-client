@@ -16,10 +16,19 @@
 }
 
 .close {
+  color: gray !important;
   &:active,
   &:focus {
     outline: none;
   }
+}
+
+.success {
+  color: green !important;
+}
+
+.danger {
+  color: red !important;
 }
 
 @keyframes light-bounce-in {

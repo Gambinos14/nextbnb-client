@@ -26,6 +26,7 @@ class AutoDismissAlert extends React.Component {
 
   render () {
     const { variant, heading, message } = this.props
+
     return (
       <Alert
         dismissible
@@ -33,7 +34,7 @@ class AutoDismissAlert extends React.Component {
         variant={variant}
         onClose={this.handleClose}
       >
-        <div className="container">
+        <div className={'container ' + `${variant}`}>
           <Alert.Heading>
             {heading}
           </Alert.Heading>
