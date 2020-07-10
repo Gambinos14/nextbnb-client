@@ -13,7 +13,7 @@ class GuestSignIn extends Component {
 
     this.state = {
       email: 'guest@account.com',
-      password: 'guestone'
+      password: 'lazylogin'
     }
   }
 
@@ -26,7 +26,7 @@ class GuestSignIn extends Component {
       .then(res => setUser(res.data))
       .then(() => history.push('/'))
       .catch(() => {
-        this.setState({ email: 'guest@account.com', password: 'guestone' })
+        this.setState({ email: 'guest@account.com', password: 'lazylogin' })
         msgAlert({
           // heading: 'Sign In Failed with error: ' + error.message,
           message: messages.signInFailure,
